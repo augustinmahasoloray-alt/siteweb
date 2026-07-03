@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://augustin-site-web.vercel.app/sitemap.xml
+Sitemap: https://augustinmahasoloray-alt.github.io/siteweb/sitemap.xml
