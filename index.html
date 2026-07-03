@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Volania — Parfums de Madagascar | augustin_site_web</title>
+<meta name="description" content="Volania, maison de parfums de niche fabriqués à Madagascar à partir de vanille, ylang-ylang et bois précieux. Site vitrine réalisé par Augustin — augustin_site_web.">
+<meta name="keywords" content="augustin_site_web, Volania, parfum Madagascar, site vitrine développeur, Augustin développeur web Antananarivo">
+<meta name="author" content="Augustin">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://augustin-site-web.vercel.app/">
+
+<!-- Open Graph / réseaux sociaux -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="augustin_site_web">
+<meta property="og:title" content="Volania — Parfums de Madagascar | augustin_site_web">
+<meta property="og:description" content="Site vitrine de démonstration réalisé par Augustin : maison de parfums Volania, inspirée des matières premières de Madagascar.">
+<meta property="og:url" content="https://augustin-site-web.vercel.app/">
+<meta property="og:image" content="https://augustin-site-web.vercel.app/og-image.png">
+<meta property="og:locale" content="fr_FR">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Volania — Parfums de Madagascar | augustin_site_web">
+<meta name="twitter:description" content="Site vitrine de démonstration réalisé par Augustin, développeur web à Antananarivo.">
+<meta name="twitter:image" content="https://augustin-site-web.vercel.app/og-image.png">
+
+<!-- Favicon simple en SVG -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230e0c0a'/%3E%3Ctext x='50' y='68' font-size='60' text-anchor='middle' fill='%23b8925a' font-family='serif'%3EV%3C/text%3E%3C/svg%3E">
+
+<!-- Données structurées pour Google -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "augustin_site_web",
+  "alternateName": "Volania — Parfums de Madagascar",
+  "url": "https://augustin-site-web.vercel.app/",
+  "description": "Site vitrine de démonstration réalisé par Augustin, développeur web à Antananarivo, Madagascar.",
+  "author": {
+    "@type": "Person",
+    "name": "Augustin",
+    "jobTitle": "Développeur web",
+    "worksFor": "Passerelles Numériques Madagascar",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Antananarivo",
+      "addressCountry": "MG"
+    }
+  }
+}
+</script>
+
+<link rel="preconnect" href="https://fonts.bunny.net">
+<link href="https://fonts.bunny.net/css?family=fraunces:300,400,500,600&display=swap" rel="stylesheet">
+<link href="https://fonts.bunny.net/css?family=inter:300,400,500&display=swap" rel="stylesheet">
+<link href="https://fonts.bunny.net/css?family=jetbrains-mono:400,500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noir: #0e0c0a;
+    --noir-2: #17140f;
+    --creme: #f3ede1;
+    --or: #b8925a;
+    --or-clair: #d9b78a;
+    --olive: #4a5240;
+    --brun: #2a1f16;
+    --ligne: rgba(243,237,225,0.14);
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--noir);
+    color:var(--creme);
+    font-family:'Inter',sans-serif;
+    font-weight:300;
+    overflow-x:hidden;
+  }
+  ::selection{background:var(--or);color:var(--noir);}
+
+  a{color:inherit;text-decoration:none;}
+
+  .eyebrow{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    letter-spacing:0.28em;
+    text-transform:uppercase;
+    color:var(--or-clair);
+  }
+
+  h1,h2,h3{
+    font-family:'Fraunces',serif;
+    font-weight:400;
+    letter-spacing:0.01em;
+    line-height:1.08;
+  }
+
+  .container{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 40px;
+  }
+
+  /* ---------- NAV ---------- */
+  header{
+    position:fixed;
+    top:0;left:0;right:0;
+    z-index:100;
+    padding:28px 0;
+    transition:padding .4s ease, background .4s ease;
+  }
+  header.scrolled{
+    padding:16px 0;
+    background:rgba(14,12,10,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--ligne);
+  }
+  nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+  }
+  .logo{
+    font-family:'Fraunces',serif;
+    font-size:1.3rem;
+    letter-spacing:0.14em;
+  }
+  .logo span{color:var(--or);}
+  .nav-links{
+    display:flex;
+    gap:44px;
+    font-size:0.82rem;
+    letter-spacing:0.05em;
+  }
+  .nav-links a{
+    position:relative;
+    padding-bottom:4px;
+  }
+  .nav-links a::after{
+    content:'';
+    position:absolute;
+    left:0;bottom:0;
+    width:0;height:1px;
+    background:var(--or);
+    transition:width .35s ease;
+  }
+  .nav-links a:hover::after{width:100%;}
+  .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;}
+  .burger span{width:24px;height:1px;background:var(--creme);display:block;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    position:relative;
+    padding-top:80px;
+    background:
+      radial-gradient(ellipse at 78% 18%, rgba(184,146,90,0.10), transparent 55%),
+      radial-gradient(ellipse at 15% 85%, rgba(74,82,64,0.14), transparent 50%),
+      var(--noir);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.1fr 0.9fr;
+    align-items:center;
+    gap:40px;
+    width:100%;
+  }
+  .hero h1{
+    font-size:clamp(2.6rem, 5.4vw, 4.6rem);
+    margin:20px 0 26px;
+  }
+  .hero h1 em{
+    font-style:italic;
+    color:var(--or-clair);
+  }
+  .hero p{
+    max-width:440px;
+    font-size:1.02rem;
+    line-height:1.7;
+    color:rgba(243,237,225,0.72);
+    margin-bottom:38px;
+  }
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:12px;
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.75rem;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    padding:16px 30px;
+    border:1px solid var(--or);
+    color:var(--creme);
+    transition:background .35s ease, color .35s ease;
+  }
+  .btn:hover{background:var(--or);color:var(--noir);}
+  .btn-ghost{border-color:var(--ligne);}
+  .btn-ghost:hover{background:transparent;border-color:var(--or);color:var(--or-clair);}
+
+  /* signature motif: orchid/vanilla line art */
+  .motif-wrap{
+    position:relative;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+  }
+  .motif-wrap svg{
+    width:100%;
+    max-width:420px;
+    filter:drop-shadow(0 0 40px rgba(184,146,90,0.08));
+    animation:sway 9s ease-in-out infinite;
+    transform-origin:50% 85%;
+  }
+  @keyframes sway{
+    0%,100%{transform:rotate(-1.2deg);}
+    50%{transform:rotate(1.2deg);}
+  }
+
+  .scroll-cue{
+    position:absolute;
+    bottom:36px;left:50%;
+    transform:translateX(-50%);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.65rem;
+    letter-spacing:0.2em;
+    color:rgba(243,237,225,0.4);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:10px;
+  }
+  .scroll-cue .line{width:1px;height:30px;background:rgba(243,237,225,0.4);animation:pulse 2s ease-in-out infinite;}
+  @keyframes pulse{0%,100%{opacity:0.2;}50%{opacity:0.8;}}
+
+  /* ---------- SECTION GENERIQUE ---------- */
+  section{
+    padding:130px 0;
+    position:relative;
+  }
+  .section-head{
+    max-width:600px;
+    margin-bottom:70px;
+  }
+  .section-head h2{
+    font-size:clamp(2rem,3.6vw,2.8rem);
+    margin-top:16px;
+  }
+  .divider{
+    width:60px;height:1px;
+    background:var(--or);
+    margin:22px 0;
+  }
+
+  /* reveal on scroll */
+  .reveal{
+    opacity:0;
+    transform:translateY(28px);
+    transition:opacity .9s ease, transform .9s ease;
+  }
+  .reveal.visible{opacity:1;transform:translateY(0);}
+
+  /* ---------- HERITAGE ---------- */
+  .heritage{
+    background:var(--noir-2);
+    border-top:1px solid var(--ligne);
+    border-bottom:1px solid var(--ligne);
+  }
+  .heritage-grid{
+    display:grid;
+    grid-template-columns:0.9fr 1.1fr;
+    gap:80px;
+    align-items:start;
+  }
+  .heritage p{
+    color:rgba(243,237,225,0.7);
+    line-height:1.85;
+    font-size:1rem;
+    margin-bottom:20px;
+  }
+  .chiffres{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:30px;
+    margin-top:50px;
+  }
+  .chiffre .val{
+    font-family:'Fraunces',serif;
+    font-size:2.2rem;
+    color:var(--or-clair);
+  }
+  .chiffre .lab{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.1em;
+    color:rgba(243,237,225,0.5);
+    margin-top:6px;
+    text-transform:uppercase;
+  }
+
+  /* ---------- COLLECTION ---------- */
+  .collection-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:1px;
+    background:var(--ligne);
+    border:1px solid var(--ligne);
+  }
+  .flacon{
+    background:var(--noir);
+    padding:50px 34px;
+    transition:background .4s ease;
+  }
+  .flacon:hover{background:var(--noir-2);}
+  .flacon .num{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.7rem;
+    color:var(--or);
+    letter-spacing:0.1em;
+  }
+  .flacon-icon{
+    margin:26px 0 30px;
+    height:120px;
+    display:flex;
+    align-items:flex-end;
+  }
+  .flacon h3{
+    font-size:1.35rem;
+    margin-bottom:10px;
+    font-style:italic;
+  }
+  .flacon .notes{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    letter-spacing:0.06em;
+    color:var(--olive-clair,#8a9478);
+    text-transform:uppercase;
+    margin-bottom:16px;
+  }
+  .flacon p{
+    color:rgba(243,237,225,0.62);
+    font-size:0.92rem;
+    line-height:1.7;
+    margin-bottom:20px;
+  }
+  .flacon .prix{
+    font-family:'Fraunces',serif;
+    font-size:1.1rem;
+    color:var(--or-clair);
+  }
+
+  /* ---------- PROCESS ---------- */
+  .process{
+    background:var(--brun);
+    background:linear-gradient(180deg, var(--noir) 0%, #17110b 50%, var(--noir) 100%);
+  }
+  .process-list{
+    display:flex;
+    flex-direction:column;
+  }
+  .step{
+    display:grid;
+    grid-template-columns:100px 1fr;
+    gap:40px;
+    padding:36px 0;
+    border-top:1px solid var(--ligne);
+    align-items:center;
+  }
+  .process-list .step:last-child{border-bottom:1px solid var(--ligne);}
+  .step .idx{
+    font-family:'Fraunces',serif;
+    font-style:italic;
+    font-size:1.6rem;
+    color:rgba(243,237,225,0.3);
+  }
+  .step h3{
+    font-size:1.25rem;
+    font-weight:400;
+    margin-bottom:8px;
+  }
+  .step p{
+    color:rgba(243,237,225,0.6);
+    font-size:0.94rem;
+    max-width:560px;
+    line-height:1.7;
+  }
+
+  /* ---------- CONTACT / NEWSLETTER ---------- */
+  .contact{
+    text-align:center;
+  }
+  .contact h2{
+    font-size:clamp(2.2rem,4.4vw,3.4rem);
+    max-width:700px;
+    margin:20px auto 40px;
+  }
+  .form-row{
+    display:flex;
+    justify-content:center;
+    gap:0;
+    max-width:460px;
+    margin:0 auto;
+    border-bottom:1px solid var(--ligne);
+    padding-bottom:14px;
+  }
+  .form-row input{
+    background:transparent;
+    border:none;
+    outline:none;
+    color:var(--creme);
+    font-family:'Inter',sans-serif;
+    font-size:0.95rem;
+    flex:1;
+    padding:8px 0;
+  }
+  .form-row input::placeholder{color:rgba(243,237,225,0.35);}
+  .form-row button{
+    background:none;
+    border:none;
+    color:var(--or-clair);
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.72rem;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    cursor:pointer;
+    white-space:nowrap;
+  }
+  .form-note{
+    margin-top:16px;
+    font-size:0.75rem;
+    color:rgba(243,237,225,0.4);
+  }
+
+  /* ---------- FOOTER ---------- */
+  footer{
+    border-top:1px solid var(--ligne);
+    padding:50px 0;
+  }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:20px;
+  }
+  .foot-links{
+    display:flex;
+    gap:30px;
+    font-size:0.8rem;
+    color:rgba(243,237,225,0.6);
+  }
+  .foot-copy{
+    font-family:'JetBrains Mono',monospace;
+    font-size:0.68rem;
+    color:rgba(243,237,225,0.35);
+    letter-spacing:0.04em;
+  }
+
+  @media(max-width:860px){
+    .nav-links{display:none;}
+    .burger{display:flex;}
+    .hero-grid{grid-template-columns:1fr;text-align:left;}
+    .motif-wrap{order:-1;margin-bottom:10px;}
+    .motif-wrap svg{max-width:220px;}
+    .heritage-grid{grid-template-columns:1fr;gap:40px;}
+    .collection-grid{grid-template-columns:1fr;}
+    .chiffres{grid-template-columns:1fr;gap:20px;}
+    .step{grid-template-columns:50px 1fr;gap:20px;}
+    section{padding:90px 0;}
+    .container{padding:0 24px;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    .motif-wrap svg{animation:none;}
+    .reveal{transition:none;opacity:1;transform:none;}
+    .scroll-cue .line{animation:none;}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="container">
+    <nav>
+      <div class="logo">VOLA<span>NIA</span></div>
+      <div class="nav-links">
+        <a href="#heritage">Maison</a>
+        <a href="#collection">Collection</a>
+        <a href="#process">Savoir-faire</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="container hero-grid">
+    <div>
+      <div class="eyebrow">Maison de parfums — Madagascar</div>
+      <h1>L'essence rare<br>d'une <em>terre sauvage</em></h1>
+      <p>Volania compose des parfums de niche à partir de vanille, d'ylang-ylang et de bois précieux récoltés dans le nord de Madagascar, façonnés en petites séries à Antananarivo.</p>
+      <div style="display:flex;gap:18px;flex-wrap:wrap;">
+        <a href="#collection" class="btn">Voir la collection</a>
+        <a href="#heritage" class="btn btn-ghost">Notre histoire</a>
+      </div>
+    </div>
+    <div class="motif-wrap">
+      <svg viewBox="0 0 300 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M150 400 C150 320 140 260 150 190" stroke="#4a5240" stroke-width="1.2" opacity="0.7"/>
+        <path d="M150 190 C 90 180, 60 140, 55 90 C 100 90, 140 120, 150 190 Z" stroke="#b8925a" stroke-width="1.1" fill="none"/>
+        <path d="M150 190 C 210 180, 240 140, 245 90 C 200 90, 160 120, 150 190 Z" stroke="#b8925a" stroke-width="1.1" fill="none"/>
+        <path d="M150 190 C 130 140, 130 90, 150 40 C 170 90, 170 140, 150 190 Z" stroke="#d9b78a" stroke-width="1.2" fill="none"/>
+        <path d="M150 40 C 140 26, 150 14, 150 14 C 150 14, 160 26, 150 40 Z" stroke="#d9b78a" stroke-width="1" fill="none"/>
+        <path d="M150 190 C 200 210, 220 250, 205 300 C 175 280, 150 240, 150 190 Z" stroke="#4a5240" stroke-width="1" fill="none" opacity="0.8"/>
+        <path d="M150 190 C 100 210, 80 250, 95 300 C 125 280, 150 240, 150 190 Z" stroke="#4a5240" stroke-width="1" fill="none" opacity="0.8"/>
+        <ellipse cx="150" cy="190" rx="8" ry="10" fill="#b8925a" opacity="0.5"/>
+      </svg>
+    </div>
+  </div>
+  <div class="scroll-cue"><span>DÉFILER</span><span class="line"></span></div>
+</section>
+
+<section class="heritage" id="heritage">
+  <div class="container heritage-grid">
+    <div class="reveal">
+      <div class="eyebrow">Depuis 2016</div>
+      <h2>Une maison née<br>dans la SAVA</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="reveal">
+      <p>Dans la région de la SAVA, au nord-est de Madagascar, la vanille pousse à l'ombre des forêts humides. C'est là que Volania a établi ses premiers partenariats avec des producteurs indépendants, achetant les gousses à prix juste et les faisant curer selon des méthodes traditionnelles.</p>
+      <p>Chaque flacon est composé à la main dans notre atelier de Tana, en séries limitées de quelques centaines d'exemplaires. Nous ne cherchons pas le volume — nous cherchons la matière juste.</p>
+      <div class="chiffres">
+        <div class="chiffre"><div class="val">340</div><div class="lab">Producteurs partenaires</div></div>
+        <div class="chiffre"><div class="val">7</div><div class="lab">Compositions</div></div>
+        <div class="chiffre"><div class="val">100%</div><div class="lab">Origine Madagascar</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="collection" id="collection">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">La collection</div>
+      <h2>Sept compositions,<br>une seule origine</h2>
+    </div>
+  </div>
+  <div class="collection-grid">
+    <div class="flacon reveal">
+      <div class="num">N°01</div>
+      <div class="flacon-icon">
+        <svg width="46" height="110" viewBox="0 0 46 110" fill="none"><rect x="14" y="30" width="18" height="72" rx="2" stroke="#b8925a"/><rect x="18" y="10" width="10" height="22" stroke="#b8925a"/><rect x="16" y="4" width="14" height="8" fill="#b8925a"/></svg>
+      </div>
+      <h3>Ambre de Sambava</h3>
+      <div class="notes">Vanille · Ambre gris · Bois de santal</div>
+      <p>Un sillage chaud et enveloppant, pensé pour le soir. La vanille bourbon domine sur un fond boisé profond.</p>
+      <div class="prix">185 000 Ar</div>
+    </div>
+    <div class="flacon reveal">
+      <div class="num">N°02</div>
+      <div class="flacon-icon">
+        <svg width="46" height="110" viewBox="0 0 46 110" fill="none"><rect x="14" y="30" width="18" height="72" rx="2" stroke="#b8925a"/><rect x="18" y="10" width="10" height="22" stroke="#b8925a"/><rect x="16" y="4" width="14" height="8" fill="#b8925a"/></svg>
+      </div>
+      <h3>Ylang de Nosy Be</h3>
+      <div class="notes">Ylang-ylang · Agrumes · Musc blanc</div>
+      <p>Floral et lumineux, dominé par l'ylang-ylang cueilli à l'aube sur l'île aux parfums.</p>
+      <div class="prix">175 000 Ar</div>
+    </div>
+    <div class="flacon reveal">
+      <div class="num">N°03</div>
+      <div class="flacon-icon">
+        <svg width="46" height="110" viewBox="0 0 46 110" fill="none"><rect x="14" y="30" width="18" height="72" rx="2" stroke="#b8925a"/><rect x="18" y="10" width="10" height="22" stroke="#b8925a"/><rect x="16" y="4" width="14" height="8" fill="#b8925a"/></svg>
+      </div>
+      <h3>Rosewood 47</h3>
+      <div class="notes">Bois de rose · Poivre rose · Vétiver</div>
+      <p>Une signature boisée et sèche, inspirée des forêts de l'est, pour un usage quotidien discret.</p>
+      <div class="prix">195 000 Ar</div>
+    </div>
+  </div>
+</section>
+
+<section class="process" id="process">
+  <div class="container">
+    <div class="section-head reveal">
+      <div class="eyebrow">Savoir-faire</div>
+      <h2>De la gousse<br>au flacon</h2>
+    </div>
+    <div class="process-list">
+      <div class="step reveal">
+        <div class="idx">01</div>
+        <div>
+          <h3>Récolte</h3>
+          <p>Les gousses de vanille verte sont cueillies à la main, une à une, au moment exact de leur maturité.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="idx">02</div>
+        <div>
+          <h3>Curage</h3>
+          <p>Un séchage lent de plusieurs mois développe les arômes et la couleur brune caractéristique.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="idx">03</div>
+        <div>
+          <h3>Extraction</h3>
+          <p>Les matières premières sont distillées ou macérées dans notre atelier pour en extraire l'absolu.</p>
+        </div>
+      </div>
+      <div class="step reveal">
+        <div class="idx">04</div>
+        <div>
+          <h3>Composition</h3>
+          <p>Notre parfumeur assemble chaque jus à la main, en petites séries numérotées.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="eyebrow reveal">Restons en contact</div>
+    <h2 class="reveal">Recevez nos nouvelles<br>compositions en avant-première</h2>
+    <form class="form-row reveal" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Merci !';">
+      <input type="email" placeholder="Votre adresse email" required>
+      <button type="submit">S'inscrire →</button>
+    </form>
+    <div class="form-note">Un email par mois, jamais plus.</div>
+  </div>
+</section>
+
+<footer>
+  <div class="container foot-grid">
+    <div class="logo" style="font-size:1rem;">VOLA<span>NIA</span></div>
+    <div class="foot-links">
+      <a href="#">Instagram</a>
+      <a href="#">Facebook</a>
+      <a href="#">contact@volania.mg</a>
+    </div>
+    <div class="foot-copy">© 2026 VOLANIA — ANTANANARIVO, MADAGASCAR · Site conçu par Augustin (augustin_site_web)</div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  const revealEls = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(e.isIntersecting){
+        e.target.classList.add('visible');
+        io.unobserve(e.target);
+      }
+    });
+  }, {threshold:0.15});
+  revealEls.forEach(el => io.observe(el));
+</script>
+
+</body>
+</html>
